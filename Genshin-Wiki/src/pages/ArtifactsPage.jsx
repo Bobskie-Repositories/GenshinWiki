@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { useData } from "../context/DataContext";
-import WeaponsList from "../components/WeaponsList";
+import ArtifactList from "../components/ArtifactList";
 
-const WeaponsPage = () => {
-  const { weapons } = useData();
+const ArtifactsPage = () => {
+  const { artifacts } = useData();
 
   // pagination
-  const weaponsPerPage = 8;
+  const artifactsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const indexOfLastWeapon = currentPage * weaponsPerPage;
-  const indexOfFirstWeapon = indexOfLastWeapon - weaponsPerPage;
-  const currentWeapons = weapons.slice(indexOfFirstWeapon, indexOfLastWeapon);
+  const indexOfLastArtifact = currentPage * artifactsPerPage;
+  const indexOfFirstArtifact = indexOfLastArtifact - artifactsPerPage;
+  const currentArtifacts = artifacts.slice(indexOfFirstArtifact, indexOfLastArtifact);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const renderPaginationButtons = () => {
-    const totalPages = Math.ceil(weapons.length / weaponsPerPage);
+    const totalPages = Math.ceil(artifacts.length / artifactsPerPage);
     return Array.from({ length: totalPages }).map((_, index) => (
       <button
         key={index}
@@ -32,9 +32,9 @@ const WeaponsPage = () => {
   return (
     <div className="flex justify-center">
       <div className="bg-slate-100 w-9/12 bg-opacity-90 py-8 px-10 my-10 rounded-lg">
-        <span className="font-bold sm:text-xl md:text-3xl">Weapons</span>
+        <span className="font-bold sm:text-xl md:text-3xl">Artifacts</span>
         <div className="border border-yellow-500 px-8 pb-8 pt-4 m-8 rounded-md">
-          <WeaponsList weapons={currentWeapons} />
+          <ArtifactList artifacts={currentArtifacts} />
           <div className="flex justify-center mt-4">{renderPaginationButtons()}</div>
         </div>
       </div>
@@ -42,4 +42,4 @@ const WeaponsPage = () => {
   );
 };
 
-export default WeaponsPage;
+export default ArtifactsPage;
