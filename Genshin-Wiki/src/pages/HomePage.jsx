@@ -36,7 +36,9 @@ const HomePage = () => {
                 <NavLink to="/characters">View more</NavLink>
               </button>
             </div>
-            <CharacterList characters={characters.slice(0, 10)} />
+            <CharacterList
+              characters={characters.sort((a, b) => b.rarity - a.rarity).slice(0, 10)}
+            />
           </div>
         </div>
 
@@ -48,7 +50,7 @@ const HomePage = () => {
                 <NavLink to="/weapons">View more</NavLink>
               </button>
             </div>
-            <WeaponsList weapons={weapons.slice(0, 10)} />
+            <WeaponsList weapons={weapons.slice(0, 4)} />
           </div>
         </div>
 
@@ -60,7 +62,7 @@ const HomePage = () => {
                 <NavLink to="/artifacts">View more</NavLink>
               </button>
             </div>
-            <ArtifactList artifacts={artifacts.slice(0, 10)} />
+            <ArtifactList artifacts={artifacts.slice(0, 4)} />
           </div>
         </div>
       </div>
