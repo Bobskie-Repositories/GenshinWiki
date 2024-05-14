@@ -8,6 +8,8 @@ import S_CharacterPage from "./pages/S_CharacterPage";
 import AddCharacterPage from "./pages/AddCharacterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import backgroundImage from "/genshinBG.jpg";
+import AddWeaponPage from "./pages/AddWeaponPage";
+import AddArtifactPage from "./pages/AddArtifactPage";
 
 function App() {
   return (
@@ -26,9 +28,15 @@ function App() {
             <Route path="add" element={<AddCharacterPage />} />
           </Route>
 
-          <Route path="weapons" index element={<WeaponsPage />} />
+          <Route path="weapons">
+            <Route index element={<WeaponsPage />} />
+            <Route path="add" element={<AddWeaponPage />} />
+          </Route>
 
-          <Route path="artifacts" element={<ArtifactsPage />} />
+          <Route path="artifacts">
+            <Route index element={<ArtifactsPage />} />
+            <Route path="add" element={<AddArtifactPage />} />
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
