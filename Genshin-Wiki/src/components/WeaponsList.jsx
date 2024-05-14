@@ -2,20 +2,39 @@ import React from "react";
 
 const WeaponsList = ({ weapons }) => {
   return (
-    <div className="grid lg:grid-cols-5 sm:grid-cols-3 gap-4 mt-4 ">
-      {weapons.map((weapon) => (
-        <div
-          key={weapon.id}
-          className="border border-slate-400 p-4 rounded-md flex flex-col items-center transition transform hover:scale-105 cursor-pointer hover:border-yellow-500"
-        >
-          <img
-            src={`https://genshinlist.com/assets/img/weapons/${weapon.slug}.png`}
-            alt={weapon.name}
-            className="h-20 w-auto"
-          />
-          <span className="mt-2">{weapon.name}</span>
-        </div>
-      ))}
+    <div className="overflow-x-auto">
+      <table className="min-w-full bg-white">
+        <thead>
+          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal ">
+            <th className="py-3 px-6 text-center">Weapon</th>
+            <th className="py-3 px-6 text-center">Name</th>
+            <th className="py-3 px-6 text-center">Type</th>
+            <th className="py-3 px-6 text-center">Atk</th>
+            <th className="py-3 px-6 text-center">Rarity</th>
+          </tr>
+        </thead>
+        <tbody className="text-gray-600 text-sm font-light">
+          {weapons.map((weapon) => (
+            <tr key={weapon.id} className="border-b border-gray-200 hover:bg-gray-100">
+              <td className="py-3 px-6 flex justify-center ">
+                <img src={weapon.image_url} alt={weapon.name} className="h-16 w-auto" />
+              </td>
+              <td className="py-3 px-6 text-center">
+                <span className="ml-2">{weapon.name}</span>
+              </td>
+              <td className="py-3 px-6 text-center">
+                <span className="ml-2">{weapon.type}</span>
+              </td>
+              <td className="py-3 px-6 text-center">
+                <span className="ml-2">{weapon.atk}</span>
+              </td>
+              <td className="py-3 px-6 text-center">
+                <span className="ml-2">{weapon.rarity}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

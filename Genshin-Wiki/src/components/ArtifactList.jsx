@@ -2,20 +2,32 @@ import React from "react";
 
 const ArtifactList = ({ artifacts }) => {
   return (
-    <div className="grid lg:grid-cols-5 sm:grid-cols-3 gap-4 mt-4 ">
-      {artifacts.map((artifact) => (
-        <div
-          key={artifact.id}
-          className="border border-slate-400 p-4 rounded-md flex flex-col items-center transition transform hover:scale-105 cursor-pointer hover:border-yellow-500"
-        >
-          <img
-            src={`https://genshinlist.com/assets/img/artifacts/${artifact.slug}.png`}
-            alt={artifact.name}
-            className="h-20 w-auto"
-          />
-          <span className="mt-2">{artifact.name}</span>
-        </div>
-      ))}
+    <div className="overflow-x-auto">
+      <table className="min-w-full bg-white">
+        <thead>
+          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <th className="py-3 px-6 text-center">Name</th>
+            <th className="py-3 px-6 text-center">2_set_bonus</th>
+            <th className="py-3 px-6 text-center">4_set_bonus</th>
+          </tr>
+        </thead>
+        <tbody className="text-gray-600 text-sm font-light">
+          {artifacts.map((artifact) => (
+            <tr key={artifact.id} className="border-b border-gray-200 hover:bg-gray-100">
+              <td className="flex py-3 px-6 text-center items-center">
+                <img src={artifact.image_url} alt={artifact.name} className="h-20 w-auto" />
+                <span className="ml-2">{artifact.name}</span>
+              </td>
+              <td className="py-3 px-6 text-center">
+                <span className="ml-2">{artifact["2_set_bonus"]}</span>
+              </td>
+              <td className="py-3 px-6 text-center">
+                <span className="ml-2">{artifact["4_set_bonus"]}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
