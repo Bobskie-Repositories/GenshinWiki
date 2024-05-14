@@ -23,13 +23,16 @@ const AddArtifactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiConfig.API_URL}/artifacts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(artifactInfo),
-      });
+      const response = await fetch(
+        `https://json-server-vercel-three-sigma.vercel.app/api/artifacts`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(artifactInfo),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to save artifact");
       }

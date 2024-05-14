@@ -27,13 +27,16 @@ const AddCharacterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiConfig.API_URL}/characters`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(characterInfo),
-      });
+      const response = await fetch(
+        `https://json-server-vercel-three-sigma.vercel.app/api/characters`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(characterInfo),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to save character");
       }

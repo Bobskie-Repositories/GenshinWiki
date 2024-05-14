@@ -12,7 +12,9 @@ const S_CharacterPage = () => {
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
-        const response = await fetch(`${apiConfig.API_URL}/characters/${id}`);
+        const response = await fetch(
+          `https://json-server-vercel-three-sigma.vercel.app/api/characters/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch character data");
         }
@@ -30,9 +32,12 @@ const S_CharacterPage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${apiConfig.API_URL}/characters/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://json-server-vercel-three-sigma.vercel.app/api/characters/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to delete character");
       }

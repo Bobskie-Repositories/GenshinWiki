@@ -25,13 +25,16 @@ const AddWeaponPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiConfig.API_URL}/weapons`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(weaponInfo),
-      });
+      const response = await fetch(
+        `https://json-server-vercel-three-sigma.vercel.app/api/weapons`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(weaponInfo),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to save weapon");
       }

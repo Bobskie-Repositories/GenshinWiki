@@ -11,15 +11,21 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const charactersResponse = await fetch(`${apiConfig.API_URL}/characters`);
+        const charactersResponse = await fetch(
+          `https://json-server-vercel-three-sigma.vercel.app/api/characters`
+        );
         const charactersData = await charactersResponse.json();
         setCharacters(charactersData);
 
-        const weaponsResponse = await fetch(`${apiConfig.API_URL}/weapons`);
+        const weaponsResponse = await fetch(
+          `https://json-server-vercel-three-sigma.vercel.app/api/weapons`
+        );
         const weaponsData = await weaponsResponse.json();
         setWeapons(weaponsData);
 
-        const artifactsResponse = await fetch(`${apiConfig.API_URL}/artifacts`);
+        const artifactsResponse = await fetch(
+          `https://json-server-vercel-three-sigma.vercel.app/api/artifacts`
+        );
         const artifactsData = await artifactsResponse.json();
         setArtifacts(artifactsData);
       } catch (error) {
